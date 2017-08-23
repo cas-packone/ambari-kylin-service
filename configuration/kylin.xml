@@ -254,10 +254,5 @@ kylin.engine.spark.max-partition=5000
     <value>http://10.0.83.123/HDP/2.x/updates/2.6.1.0/kylin/apache-kylin-2.1.0-bin-hbase1x.tar.gz</value>
     <description>Location to download gstore</description>
  </property> 
-<property>
-    <name>install.dir</name>
-    <value>/opt/kylin</value>
-    <description>kylin installed path</description>
- </property> 
 
 </configuration>
