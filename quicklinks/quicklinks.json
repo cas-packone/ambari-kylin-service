@@ -1,0 +1,39 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+
+    "links": [
+      {
+        "name": "admin_ui",
+        "label": "ADMIN UI",
+        "requires_user_name": "false",
+        "component_name": "GSTORE_SERVER",
+        "url":"%@://%@:%@/admin.html",
+        "port":{
+          "http_property": "9000",
+          "http_default_port": "9000",
+          "https_property": "9000",
+          "https_default_port": "9000",
+          "regex": "^(\\d+)$",
+          "site": "gstore"
+        }
+      },
+	  {
+        "name": "monitor_ui",
+        "label": "MONITOR UI",
+        "requires_user_name": "false",
+        "component_name": "GSTORE_SERVER",
+        "url":"%@://%@:%@/monitor",
+        "port":{
+          "http_property": "9000",
+          "http_default_port": "9000",
+          "https_property": "9000",
+          "https_default_port": "9000",
+          "regex": "^(\\d+)$",
+          "site": "gstore"
+        }
+      }
+    ]
+  }
+}
