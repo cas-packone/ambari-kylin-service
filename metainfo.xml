@@ -24,10 +24,22 @@
           <name>KYLIN_QUERY</name>
           <displayName>Kylin Query</displayName>
           <category>SLAVE</category>
-		  <cardinality>1+</cardinality>
+		  <cardinality>0+</cardinality>
 		  <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/kylin_query.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+		<component>
+          <name>NGINX_SERVER</name>
+          <displayName>Nginx Server</displayName>
+          <category>MASTER</category>
+		  <cardinality>1</cardinality>
+		  <versionAdvertised>true</versionAdvertised>
+          <commandScript>
+            <script>scripts/nginx.py</script>
             <scriptType>PYTHON</scriptType>
             <timeout>600</timeout>
           </commandScript>
@@ -40,6 +52,16 @@
 		<service>HBASE</service>
 	  </requiredServices>
 	  
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>redhat5,redhat6,redhat7</osFamily>
+          <packages>
+            <package>
+              <name>epel-release</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>	  
 	  <quickLinksConfigurations>
         <quickLinksConfiguration>
           <fileName>quicklinks.json</fileName>
