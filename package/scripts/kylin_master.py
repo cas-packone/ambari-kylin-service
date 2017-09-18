@@ -16,6 +16,10 @@ class KylinMaster(Script):
         Execute('cd ' + params.install_dir + '; wget ' + params.downloadlocation + ' -O kylin.tar.gz  ')
         Execute('cd ' + params.install_dir + '; tar -xvf kylin.tar.gz')
         Execute('cd ' + params.install_dir + ';rm -rf latest; ln -s apache-kylin* latest')
+        
+        #mkdir
+        Execute('sudo -uhdfs hadoop fs -mkdir /kylin')
+        Execute('sudo -uhdfs hadoop fs -chown -R kylin:kylin /kylin')
                 
 
     def configure(self, env):  
