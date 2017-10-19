@@ -26,11 +26,11 @@ class NginxMaster(Script):
         
 
     def stop(self, env):
-        Execute("service nginx stop")
+        Execute("nginx -s stop")
 
 
     def restart(self, env):
-        Execute("service nginx restart")
+        Execute("nginx -s reload")
 
     def status(self, env):
         Execute("service nginx status")
