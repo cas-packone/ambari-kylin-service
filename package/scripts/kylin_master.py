@@ -18,7 +18,7 @@ class KylinMaster(Script):
         Execute('cd ' + params.install_dir + ';rm -rf latest; ln -s apache-kylin* latest')
         
         #mkdir
-        Execute('sudo -uhdfs hadoop fs -mkdir /kylin')
+        Execute('sudo -uhdfs hadoop fs -mkdir -p /kylin')
         Execute('sudo -uhdfs hadoop fs -chown -R kylin:kylin /kylin')
                 
 
@@ -29,21 +29,21 @@ class KylinMaster(Script):
         kylin_properties = InlineTemplate(params.kylin_properties)   
         File(format("{install_dir}/latest/conf/kylin.properties"), content=kylin_properties)
         
-        File(format("{tmp_dir}/init.sh"),
+        File(format("{tmp_dir}/kylin_init.sh"),
              content=Template("init.sh.j2"),
              mode=0o700
              )        
-        File(format("{tmp_dir}/env.rc"),
+        File(format("{tmp_dir}/kylin_env.rc"),
              content=Template("env.rc.j2"),
              mode=0o700
              )              
-        Execute(format("bash {tmp_dir}/init.sh"))
+        Execute(format("bash {tmp_dir}/kylin_init.sh"))
              
     def start(self, env):
         import params
         env.set_params(params)
         self.configure(env)
-        Execute(format(". {tmp_dir}/env.rc;{install_dir}/latest/bin/kylin.sh start;cp -rf {install_dir}/latest/pid /var/run/kylin.pid"))
+        Execute(format(". {tmp_dir}/kylin_env.rc;{install_dir}/latest/bin/kylin.sh start;cp -rf {install_dir}/latest/pid /var/run/kylin.pid"))
         
 
     def stop(self, env):
