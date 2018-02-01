@@ -45,7 +45,7 @@ class KylinQuery(Script):
         import params
         env.set_params(params)
         self.configure(env)
-        Execute(format(". {tmp_dir}/env.rc;{install_dir}/latest/bin/kylin.sh stop"))
+        Execute(format(". {tmp_dir}/kylin_env.rc;{install_dir}/latest/bin/kylin.sh stop"))
 
 
     def restart(self, env):
