@@ -8,15 +8,15 @@
         "name": "kylin_ui",
         "label": "KYLIN UI",
         "requires_user_name": "false",
-        "component_name": "NGINX_SERVER",
+        "component_name": "KYLIN_ALL",
         "url":"%@://%@:%@/kylin",
         "port":{
-          "http_property": "nginx_port",
-          "http_default_port": "80",
-          "https_property": "nginx_port",
-          "https_default_port": "80",
+          "http_property": "7070",
+          "http_default_port": "7070",
+          "https_property": "7070",
+          "https_default_port": "7070",
           "regex": "^(\\d+)$",
-          "site": "nginx"
+          "site": "kylin"
         }
       }
     ]

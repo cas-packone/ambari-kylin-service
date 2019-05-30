@@ -13,7 +13,6 @@
           <displayName>Kylin All</displayName>
           <category>MASTER</category>
 		  <cardinality>1</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/kylin_master.py</script>
             <scriptType>PYTHON</scriptType>
@@ -25,31 +24,18 @@
           <displayName>Kylin Query</displayName>
           <category>SLAVE</category>
 		  <cardinality>0+</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/kylin_query.py</script>
             <scriptType>PYTHON</scriptType>
             <timeout>600</timeout>
           </commandScript>
         </component>
-		<component>
-          <name>NGINX_SERVER</name>
-          <displayName>Nginx Server</displayName>
-          <category>MASTER</category>
-		  <cardinality>1</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-          <commandScript>
-            <script>scripts/nginx.py</script>
-            <scriptType>PYTHON</scriptType>
-            <timeout>600</timeout>
-          </commandScript>
-        </component>
       </components>
 
-      <requiredServices>
+    <requiredServices>
 	    <service>HDFS</service>
 	    <service>HIVE</service>
-		<service>HBASE</service>
+		  <service>HBASE</service>
 	  </requiredServices>
 	  
       <osSpecifics>
