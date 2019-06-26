@@ -40,7 +40,7 @@ class KylinQuery(Script):
         self.configure(env)
         Execute(format(". {tmp_dir}/kylin_env.rc;{install_dir}/latest/bin/kylin.sh start"))
         sleep(5)
-        Execute("lsof -i:7070 | grep -v grep | grep \"java\" | awk '{print $2}' >"+format("{install_dir}/latest/pid"))
+        Execute("ps -ef | grep java | grep kylin | grep -v grep | awk '{print $2}'>"+format("{install_dir}/latest/pid"))
         Execute(format("rm -rf /var/run/kylin.pid;cp {install_dir}/latest/pid /var/run/kylin.pid"))
         
 
