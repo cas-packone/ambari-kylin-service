@@ -251,7 +251,7 @@ kylin.engine.spark.max-partition=5000
   </property>
 <property>
     <name>download.location</name>
-    <value>http://repo.packone/hdp/kylin/apache-kylin.tar</value>
+    <value>https://github.com/cas-packone/ambari-kylin-service/releases/download/0.1/apache-kylin.tar</value>
     <description>Location to download gstore</description>
  </property> 
 
