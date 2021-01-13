@@ -65,6 +65,10 @@ kylin.source.hive.database-for-flat-table=default
 # Whether redistribute the intermediate flat table before building
 kylin.source.hive.redistribute-flat-table=true
 
+## Configuration for HDP 2.6.x when kylin.source.hive.client=beeline
+#kylin.source.hive.sparksql-beeline-shell=/usr/hdp/current/spark2-client/bin/beeline
+#kylin.source.hive.sparksql-beeline-params=-n root --hiveconf hive.security.authorization.sqlstd.confwhitelist.append='mapreduce.job.*|dfs.*' -u jdbc:hive2://<hive_host>:10000
+
 
 ### STORAGE ###
 
@@ -238,7 +242,10 @@ kylin.engine.spark.max-partition=5000
 #kylin.engine.spark-conf.spark.eventLog.dir=hdfs\:///kylin/spark-history
 #kylin.engine.spark-conf.spark.history.fs.logDirectory=hdfs\:///kylin/spark-history
 
-## manually upload spark-assembly jar to HDFS and then set this property will avoid repeatedly uploading jar at runtime
+## Copy the following file /spark/spark-libs.jar from the kylin .tar package to HDFS to avoid uploading dependencies at runtime
+#kylin.engine.spark-conf.spark.yarn.archive=hdfs://<namenode_host>:8020/kylin/spark/spark-libs.jar
+
+## or manually upload spark-assembly jar to HDFS and then set this property will avoid repeatedly uploading jar at runtime
 #kylin.engine.spark-conf.spark.yarn.jar=hdfs://packone165:8020/kylin/spark/spark-assembly-1.6.3-hadoop2.6.0.jar
 #kylin.engine.spark-conf.spark.io.compression.codec=org.apache.spark.io.SnappyCompressionCodec
 
@@ -249,10 +256,10 @@ kylin.engine.spark.max-partition=5000
 
     </value>
   </property>
-<property>
+  <property>
     <name>download.location</name>
-    <value>https://github.com/cas-packone/ambari-kylin-service/releases/download/0.1/apache-kylin.tar</value>
-    <description>Location to download gstore</description>
+    <value>https://github.com/alfonsonishikawa/ambari-kylin-service/releases/download/3.1.1/apache-kylin.tar</value>
+    <description>Location to download the package Apache Kylin 3.1.1 + spark 2.2.0 + HBase 1.2.0</description>
  </property> 
 
 </configuration>
