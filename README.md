@@ -14,5 +14,7 @@ service ambari restart
 \#non sandbox  
 sudo service ambari-server restart
 
+At the install process, when setting the configuration, set the value for `download.location` with the path to the package `apache-kylin.tar` in one of the  [releases](https://github.com/cas-packone/ambari-kylin-service/releases).
+
 ## SUMMARY
 ![Image](../master/screenshots/kylin.png?raw=true)
